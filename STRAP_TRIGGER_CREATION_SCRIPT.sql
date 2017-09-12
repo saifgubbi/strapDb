@@ -450,6 +450,9 @@ EXCEPTION
 WHEN NO_DATA_FOUND THEN
 raise_application_error (-20001,'No data available for this customer part number');   
 END;
+/
+Show Err;
+/
 
 -- Create Before Serial Trigger
 CREATE OR REPLACE TRIGGER STRAP.BEFORE_SERIAL_TRIG
