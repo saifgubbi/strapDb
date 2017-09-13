@@ -97,7 +97,7 @@ CREATE TABLE STRAP.BINS_T
    
    CREATE TABLE STRAP.USERS_T
    (  USER_ID                   VARCHAR2(8) NOT NULL, 
-	  PASSWORD                  VARCHAR2(8), 
+	  PASSWORD                  VARCHAR2(60), 
 	  NAME                      VARCHAR2(70), 
 	  EMAIL                     VARCHAR2(70), 
 	  PHONE                     NUMBER(10,0), 
@@ -254,3 +254,18 @@ CREATE TABLE STRAP.BINS_T
    );
   
 --CREATE OR REPLACE SYNONYM APPS.SERIAL_T FOR STRAP.SERIAL_T;  
+
+  CREATE TABLE STRAP.DEVICE_T 
+   (  DEVICE_NO                 VARCHAR2(20) NOT NULL, 
+	  PART_GRP                  VARCHAR2(4) ,
+    CONSTRAINT PK_DEVICE PRIMARY KEY (DEVICE_NO)
+   );
+     --CREATE OR REPLACE SYNONYM APPS.DEVICE_T FOR STRAP.DEVICE_T; 
+	 
+   CREATE TABLE STRAP.GEOFENCE_T 
+   (  GEOFENCE_ID                VARCHAR2(50) NOT NULL,   
+      TYPE                       VARCHAR2(10),
+      MAP_VAL                    VARCHAR2(50), 
+	  DESCRIPTION                VARCHAR2(50)
+   );
+     --CREATE OR REPLACE SYNONYM APPS.GEOFENCE_T FOR STRAP.GEOFENCE_T; 
