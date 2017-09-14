@@ -116,7 +116,7 @@ BEGIN
                QTY=0,
                PART_GRP=NULL
          WHERE BIN_ID=:NEW.EVENT_ID;
-    ELSIF :NEW.EVENT_TYPE = 'Pallet' AND :NEW.EVENT_NAME='Invoice'
+    ELSIF :NEW.EVENT_TYPE = 'Pallet' AND :NEW.EVENT_NAME='Invoiced'
     THEN
         UPDATE INV_HDR_T
            SET STATUS='Parts Assigned'
@@ -161,7 +161,7 @@ BEGIN
            SET STATUS='New'
          WHERE INVOICE_NUM=:NEW.EVENT_ID
            AND STATUS='Parts Assigned';
-    ELSIF :NEW.EVENT_TYPE = 'Bin' AND :NEW.EVENT_NAME='Invoice'
+    ELSIF :NEW.EVENT_TYPE = 'Bin' AND :NEW.EVENT_NAME='Invoiced'
     THEN
         UPDATE INV_HDR_T
            SET STATUS='Parts Assigned'
