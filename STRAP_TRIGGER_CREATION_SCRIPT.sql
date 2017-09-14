@@ -11,6 +11,7 @@ AFTER INSERT ON STRAP.EVENTS_T
 FOR EACH ROW
 DECLARE
   lv_error_message VARCHAR2(1000);
+  lv_partNo VARCHAR2(20):=NULL;
   PRAGMA AUTONOMOUS_TRANSACTION;
 BEGIN
    
@@ -376,6 +377,17 @@ BEGIN
        WHERE BIN_ID=:NEW.EVENT_ID;
   ELSIF :NEW.EVENT_TYPE IN ('Invoice') AND :NEW.EVENT_NAME='ASN Assigned'
   THEN
+	BEGIN
+		SELECT PART_NO 
+		  INTO lv_partNo 
+	      FROM PARTS_T 
+	     WHERE CUST_PART_NO = :new.PART_NO; -- Events Part No will be mapped with Cust Part No to derive part no
+    EXCEPTION
+    WHEN OTHERS THEN
+     lv_partNo :=NULL;
+    END;
+   
+   --:new.PART_NO := lv_partNo;
   INSERT INTO ASN_T
   (
     ASN_ID
@@ -395,7 +407,7 @@ BEGIN
    , SYSDATE	
    ,:NEW.EVENT_ID	
    ,:NEW.PART_NO	
-   ,:NEW.PART_NO	
+   ,lv_partNo	
    ,:NEW.QTY	
    ,:NEW.PART_GRP	
    ,:NEW.USER_ID	
