@@ -189,10 +189,10 @@ CREATE TABLE STRAP.BINS_T
 	  TOTAL                     NUMBER, 
 	  SUCCESS                   NUMBER, 
 	  ERROR                     NUMBER, 
-	  SYSFILENAME               VARCHAR2(50), 
-	  ORIGFILENAME              VARCHAR2(50), 
-	  LOGFILENAME               VARCHAR2(50), 
-	  DESCRIPTION               VARCHAR2(50), 
+	  SYSFILENAME               VARCHAR2(100), 
+	  ORIGFILENAME              VARCHAR2(100), 
+	  LOGFILENAME               VARCHAR2(100), 
+	  DESCRIPTION               VARCHAR2(100), 
 	  PART_GRP                  VARCHAR2(4) NOT NULL,
 	  CONSTRAINT PK_UPLOAD_LOG PRIMARY KEY (SEQ)
    );

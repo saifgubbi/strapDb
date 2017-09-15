@@ -358,7 +358,8 @@ BEGIN
              INVOICE_NUM=NULL,
              FROM_LOC=:NEW.FROM_LOC,
              PART_GRP=:NEW.PART_GRP,
-             QTY=QTY+:NEW.QTY
+             QTY=QTY+:NEW.QTY,
+			 PART_NO=:NEW.PART_NO
        WHERE BIN_ID=:NEW.EVENT_ID;
   ELSIF :NEW.EVENT_TYPE ='Bin' AND :NEW.EVENT_NAME='Transferred' AND :NEW.EVENT_ID <> :NEW.REF_ID
   THEN    
@@ -373,7 +374,8 @@ BEGIN
              INVOICE_NUM=NULL,
              FROM_LOC=:NEW.FROM_LOC,
              PART_GRP=:NEW.PART_GRP,
-             QTY=:NEW.QTY
+             QTY=:NEW.QTY,
+			 PART_NO=:NEW.PART_NO
        WHERE BIN_ID=:NEW.EVENT_ID;
   ELSIF :NEW.EVENT_TYPE IN ('Invoice') AND :NEW.EVENT_NAME='ASN Assigned'
   THEN
